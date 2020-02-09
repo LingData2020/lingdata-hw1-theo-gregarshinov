@@ -23,14 +23,15 @@ x <- rnorm(20, mean=3, sd=6)
 hist(x, col="tomato", main="")
 ```
 
-a. What is the proportion of values in the sample that exceed $5$? Explain your answer.
+a. What is the proportion of values in the sample that exceed $5$? Explain your answer. \\
 
 Answer: $\frac{5}{20}$, because there are only five values, that exceed $5$ and there are $20$ values in the sample.
 
-b. Indicate the interval where the median of this sample can lie. Explain your answer.
+b. Indicate the interval where the median of this sample can lie. Explain your answer. \\
 
-Answer: For instance, the meaon on interval $[-15, 0]$ will definately lie, because the values are too unevenly distriputed.
-c. How the histogram will change if we add an element $7$ to the sample? Explain your answer.
+Answer: For instance, the meaon on interval $[-15, 0]$ will definately lie, because the values are too unevenly distriputed. \\
+
+c. How the histogram will change if we add an element $7$ to the sample? Explain your answer. \\
 Answer: The bar $[5, 10]$ will grow by one point.
 
 ### Problem 2
@@ -48,7 +49,9 @@ hist(sample1, col="lightblue", xlim=c(100, 900))
 hist(sample2, col="lightgreen", xlim=c(100, 900))
 ```
 
-Which of the samples has a larger variance? Explain your answer.
+Which of the samples has a larger variance? Explain your answer. \\
+
+Answer: The sample number $1$ has a larger variavce, because its values vary on a larger interval ($[350, 650]$ vs. $[450, 50]$)
 
 \newpage
 
@@ -63,7 +66,8 @@ hist(sample1, col="lightblue", xlim=c(-40, 40))
 hist(sample2, col="lightgreen", xlim=c(5, 15))
 ```
 
-Which of the samples has a larger variance? Explain your answer.
+Which of the samples has a larger variance? Explain your answer. \\
+Answer: The sample number $1$ has a larger variavce, because its values vary on a larger interval ($approximately [-8, 17]$ vs. $[8, 12]$)
 
 ## Part 2
 
@@ -82,34 +86,40 @@ hist(mistakes, breaks=60, col= "deepskyblue", ylim=c(0, 40))
 ### 3.1
 Is it true that $50$% students made more than $35$ mistakes?
 ```
-
+NO
 ```
-Explain your answer below:
-
+Explain your answer below: \\
+According to the bar chart, the number of students, who made more than 35 mistakes is way less than the number of those who did not.
 
 ### 3.2
 Is it true that most students made no more than $10$ mistakes?
 ```
-
+NO
 ```
-Explain your answer below:
-
+Explain your answer below: \\
+The sum of frequencies on $(10, \infty)$ is bigger that on $[0, 10]$
 
 ### 3.3
 Which of the following values is closer to be the median of `mistakes`: $10$, $20$, $30$, $40$?
 ```
-
+20
 ```
-Explain your answer below:
-
+Explain your answer below: \\
+Because, if all the values in the sample were lain out in a sorted list, the frequencies around $20$ would make the most of the sample and occupy the center of the list.
 
 ### Problem 4. Exact binomial test
 
 The null hypothesis is that $p=0$ (i.e. no success is possible). In a dataset, there is only one success out of 1 000 000 observations. Will you reject the null hypothesis? 
 ```
-
+YES
 ```
-Explain your answer below:
+Explain your answer below: \\
+To explain this, the binomial distribution has to be used: \\
+
+$B(N = 1000000, p=0) = {\binom{n}{k}}p^{k}(1-p)^{n-k}$ \\
+$ \sum _{i=1}^{1000000}{1000000 \choose i}0^{i}(1-0)^{1000000-i} = 0 $ \\
+
+this result (0 < 5%) indicates that we have evidence that is significant enough to reject the null hypothesis that the p = 0.
 
 
 ## Part 3
@@ -125,19 +135,19 @@ $44$, $50$, $42$, $64$, $66$, $42$, $72$, $56$, $72$, $54$, $46$, $48$, $48$, $5
 ### 5.1
 Arrange them in a vector and call it `age`. 
 ```{r}
-
+age <- c(44, 50, 42, 64, 66, 42, 72, 56, 72, 54, 46, 48, 48, 52, 50, 66, 84)
 ```
 
 ### 5.2
 Examine the type of `age` variable (numeric, character, etc).
-```
-
+```{r}
+class(age)
 ```
 
 ### 5.3
 Plot the histogram of the vector `age` with $5$ bins. Change its color to any you want. (Use either R basic or ggplot2 style for plotting.)
 ```{r}
-
+hist(age)
 ```
 
 
@@ -149,13 +159,13 @@ Here is a series of words:
 ### 6.1
 Arrange elements above in a vector and call it `words` 
 ```{r}
-
+words <- c("pie", "bar", "bar", "pie", "pie", "bar", "bar", "chart")
 ```
 
 ### 6.2
 Calculate the relative frequences of values in `words` measured in percent.
 ```{r}
-
+table(words)/length(words)
 ```
 
 ## Problem 7. Position of verbs in verses
@@ -170,7 +180,7 @@ Variables:
 - LineText — a sampled verse.  
 - Author — the author of the text.  
 
-Can we decide that in verses written in 1920s, verbs in the rhyming posision are used differently (more often or less often) than expected for verbs in general? 
+Can we decide that in verses written in 1920s, verbs in the rhyming position are used differently (more often or less often) than expected for verbs in general? 
 
 Let's assume that the probability for verbs to be used in any position ('in general') is 17% (according to [](http://www.ruscorpora.ru/new/corpora-stat.html) ).
 
@@ -178,36 +188,48 @@ Let's assume that the probability for verbs to be used in any position ('in gene
 
 What is your null hypothesis $H_0$ and what is the alternative hypothesis $H_1$?
 ```
-H0: 
-H1: 
+H0: The pobabilty of verbs being in the rhythming position is the same as being in in non-rhythming position, and equals 0.17
+H1: The pobabilty of verbs staying in the rhythming position differs from the  probability of being in non-rhythming position.
 ```
 
 ### 7.2
 
 Read the dataset [“The last words in verses”](https://raw.githubusercontent.com/LingData2019/LingData2020/master/data/poetry_last_in_lines.csv). Filter out the relevant observations from 1920s, calculate the number of verbs observed in the sample, and the sample size. 
 ```{r}
-
+df <- read.csv("https://raw.githubusercontent.com/LingData2019/LingData2020/master/data/poetry_last_in_lines.csv", sep = "\t")
+df_1920 <- df[df$Decade == "1920s",]
+verbs <- df_1920[df_1920$UPoS == "VERB",]
+len_sample <- nrow(df_1920)
+num_verbs <- nrow(verbs)
+sprintf("Number of verbs used in 1920s: %s", num_verbs)
+sprintf("The length of 1920s sample: %s", len_sample)
 ```
 
 ### 7.3
 
 Use an exact binomial test to calculate p-value. 
 ```{r}
-
+binom.test(num_verbs, len_sample, p=0.17)
 ```
 
 ### 7.4 Interpret results
 
 Give your interpretation of obtained p-value. Answer the initial question: Can we decide that in verses written in 1920s, verbs are used in the rhyming posision more often or less often than expected?
 ```
-
+As the p-values is less then 5%, we can conclude, that the null-hypothesis is rejectable.
 ```
 
 ### 7.5 
 *(A bonus problem, extra points in evaluation)*.
 Repeat 2.3 for verses written in the 1820s.
 ```{r}
-
+df_1820 <- df[df$Decade == "1820s",]
+verbs <- df_1920[df_1920$UPoS == "VERB",]
+len_sample <- nrow(df_1820)
+num_verbs <- nrow(verbs)
+sprintf("Number of verbs used in 1820s: %s", num_verbs)
+sprintf("The length of 1920s sample: %s", len_sample)
+binom.test(num_verbs, len_sample, p=0.17)
 ```
 
 Write down your general conlusions about data provided for both 1920s and 1820s data.
@@ -239,7 +261,7 @@ Interpret results.
 ```
 
 ```
-
+s
 #### Supplementary reading
 Use of exact binomial test in lingiistic research:  
 
