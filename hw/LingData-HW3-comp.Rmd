@@ -24,8 +24,14 @@ hist(x, col="tomato", main="")
 ```
 
 a. What is the proportion of values in the sample that exceed $5$? Explain your answer.
+
+Answer: $\frac{5}{20}$, because there are only five values, that exceed $5$ and there are $20$ values in the sample.
+
 b. Indicate the interval where the median of this sample can lie. Explain your answer.
+
+Answer: For instance, the meaon on interval $[-15, 0]$ will definately lie, because the values are too unevenly distriputed.
 c. How the histogram will change if we add an element $7$ to the sample? Explain your answer.
+Answer: The bar $[5, 10]$ will grow by one point.
 
 ### Problem 2
 
