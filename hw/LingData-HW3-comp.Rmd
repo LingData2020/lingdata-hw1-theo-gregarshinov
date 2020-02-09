@@ -216,7 +216,7 @@ binom.test(num_verbs, len_sample, p=0.17)
 
 Give your interpretation of obtained p-value. Answer the initial question: Can we decide that in verses written in 1920s, verbs are used in the rhyming posision more often or less often than expected?
 ```
-As the p-values is less then 5%, we can conclude, that the null-hypothesis is rejectable.
+As the p-valueis less then 5%, we can conclude, that the null-hypothesis is rejectable.
 ```
 
 ### 7.5 
@@ -234,7 +234,7 @@ binom.test(num_verbs, len_sample, p=0.17)
 
 Write down your general conlusions about data provided for both 1920s and 1820s data.
 ```
-
+According to the p-values of samples from 1820s and 1920s, there is insufficient evidence to infer that verbs are not used in the rhyming position more often or less often than expected.
 ```
 
 ### Problem 8. One-sample t-test
@@ -247,19 +247,23 @@ t.test(sample, mu = 7725) # mu is a population mean
 ### 8.1
 Write down a two-tailed alternative hypothesis.
 ```
-H1: 
+H0: the population mean of vowel duration in speaker `shg05` equals 73 (ms)
+H1: the population mean of vowel duration in speaker `shg05` is greater or less than 73 (ms)
 ```
 
 ### 8.2
 Perform a one-sample t-test. 
 ```{r}
-
+df_islandic <- read.csv("https://raw.githubusercontent.com/LingData2019/LingData2020/master/data/icelandic.csv")
+sample_shg05 <- df_islandic[df_islandic$speaker == "shg05",]
+sample_mean <- mean(df_islandic$vowel.dur)
+t.test(sample_shg05$vowel.dur, mu = sample_mean) # mu is a population mean
 ```
 
 ### 8.3
 Interpret results. 
 ```
-
+The p-value is way less than 0.05, hence the population mean of vowel duration in speaker `shg05` differs from 73.
 ```
 s
 #### Supplementary reading
